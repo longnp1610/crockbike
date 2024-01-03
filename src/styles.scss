@@ -1,1 +1,33 @@
 /* You can add global styles to this file, and also import other style files */
+@import "primeng/resources/themes/lara-light-blue/theme.css";
+@import "primeng/resources/primeng.css";
+@import "primeicons/primeicons.css";
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  height: 100%; // <-- Fallback CSS for IE 4-6 and older browsers.
+  min-height: 100%;
+  height: 100dvh; // <-- Overrides 100% height in modern HTML5 browsers and uses the viewport's height.
+  min-height: 100dvh;
+}
+
+ul {
+  padding: 0;
+  li {
+    list-style: none;
+  }
+}
+
+a {
+  text-decoration: none;
+  &:link,
+  &:visited,
+  &:hover,
+  &:active {
+    text-decoration: none;
+    color: inherit;
+  }
+}
