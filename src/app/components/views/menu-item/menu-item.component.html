@@ -1,0 +1,26 @@
+<div
+  class="align-items-center w-full"
+  [ngClass]="{
+    'hover:bg-gray-100': !isRoot(),
+    'flex': isRoot() || isLeaf(),
+    'inline-flex': hasNestedSubMenu() && !isRoot(),
+  }"
+>
+  <a
+    class="w-full py-2"
+    [routerLink]="linkTo"
+    [ngClass]="{ 'px-2': !isRoot() }"
+  >
+    <ng-content></ng-content>
+  </a>
+
+  <i
+    class="pi pi-angle-down cursor-pointer"
+    [ngClass]="{ 'px-1': isRoot(), 'px-2': hasNestedSubMenu() && !isRoot() }"
+    *ngIf="hasNestedSubMenu()"
+    (click)="onClick()"
+  ></i>
+</div>
+
+<!-- viewContainer used for nested menu  -->
+<ng-container #viewContainerRef></ng-container>
