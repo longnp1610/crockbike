@@ -1,1 +1,55 @@
-<p>header works!</p>
+<nav class="bg-white shadow-1 text-600 px-5 py-2 flex justify-content-between">
+  <div class="flex align-items-center">
+    <div class="navigation flex flex-column md:flex-row">
+      @for (item of navItems; track item.label) {
+      <app-menu-item [linkTo]="item.url" [menuFor]="item.items ? subMenu : null">
+        {{ item.label }}
+      </app-menu-item>
+      <ng-template #subMenu>
+        <app-menu>
+          @for (subItem of item.items; track subItem.label) {
+          <app-menu-item [linkTo]="subItem.url" [menuFor]="test">
+            {{ subItem.label }}
+          </app-menu-item>
+          }
+        </app-menu>
+      </ng-template>
+      }
+    </div>
+  </div>
+  <div class="brand flex align-items-center">
+    <div class="brand-logo">CrockBike</div>
+  </div>
+  <div class="utils flex align-items-center">
+    <input type="text" pInputText placeholder="Search" class="w-full" />
+  </div>
+</nav>
+
+<ng-template #test>
+  <app-menu>
+    <app-menu-item [linkTo]="'/test'" [menuFor]="testNest">
+      test nested
+    </app-menu-item>
+    <app-menu-item [linkTo]="'/test'" [menuFor]="testNest">
+      test nested
+    </app-menu-item>
+    <app-menu-item [linkTo]="'/test'" [menuFor]="testNest">
+      test nested
+    </app-menu-item>
+    <app-menu-item [linkTo]="'/test'" [menuFor]="testNest">
+      test nested
+    </app-menu-item>
+    <app-menu-item [linkTo]="'/test'" [menuFor]="testNest">
+      test nested
+    </app-menu-item>
+  </app-menu>
+</ng-template>
+
+<ng-template #testNest>
+  <app-menu>
+    <app-menu-item [linkTo]="'/test'"> test nested 2 </app-menu-item>
+    <app-menu-item [linkTo]="'/test'"> test nested 2 </app-menu-item>
+    <app-menu-item [linkTo]="'/test'"> test nested 2 </app-menu-item>
+    <app-menu-item [linkTo]="'/test'"> test nested 2 </app-menu-item>
+  </app-menu>
+</ng-template>
